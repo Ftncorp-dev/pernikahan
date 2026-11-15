@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
-    <title>Undangan Tasyakuran Rumah &amp; Aqiqah</title>
+    <title>Undangan Pernikahan Del Piero &amp; Siti Maemunah</title>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Nunito+Sans:wght@400;600&amp;display=swap"
@@ -247,7 +247,7 @@
         h1 {
           font-size: clamp(2.1rem, 9vw, 2.7rem);
         }
-        .baby {
+        .couple {
           font-size: clamp(1.8rem, 7vw, 2.2rem);
         }
         .count {
@@ -320,21 +320,21 @@
         padding: 28px 22px;
         box-shadow: 0 18px 50px rgba(0, 0, 0, 0.25);
       }
-      .landing-photo {
+      .landing-monogram {
         width: 170px;
         height: 170px;
         margin: 0 auto 18px;
         border-radius: 50%;
-        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         border: 3px solid rgba(141, 183, 255, 0.7);
         box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
-        background: #dfeaff;
-      }
-      .landing-photo img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
+        background: linear-gradient(135deg, #173b58, #8db7ff);
+        color: #fff;
+        font-family: var(--serif);
+        font-size: 2.8rem;
+        font-weight: 700;
       }
       .landing-card .small {
         display: inline-block;
@@ -435,12 +435,16 @@
         font-size: 1.7rem;
         margin: 0 0 10px;
       }
-      .baby {
+      .couple {
         font-family: var(--serif);
         font-size: 2.2rem;
         color: var(--accent);
         margin: 6px 0 0;
         font-weight: 700;
+      }
+      .family {
+        margin: 6px 0 0;
+        color: var(--muted);
       }
       .orn {
         color: var(--gold);
@@ -456,6 +460,11 @@
         opacity: 0;
         transform: translateY(28px) scale(0.98);
         filter: blur(4px);
+      }
+      .card.bride-card {
+        background:
+          linear-gradient(rgba(8, 27, 45, 0.78), rgba(8, 27, 45, 0.88)),
+          url("assets/wedding-background.jpg") center / cover no-repeat;
       }
       .card.reveal {
         animation: revealCard 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
@@ -477,20 +486,6 @@
           transform: translateY(0) scale(1);
           filter: blur(0);
         }
-      }
-      .photo-grid {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 10px;
-        margin-top: 18px;
-      }
-      .photo-grid img {
-        width: 100%;
-        aspect-ratio: 1;
-        object-fit: cover;
-        border-radius: 12px;
-        display: block;
-        border: 1px solid rgba(141, 183, 255, 0.35);
       }
       .muted {
         color: var(--muted);
@@ -535,6 +530,94 @@
       .row {
         margin: 12px 0;
       }
+      .story-photo {
+        position: relative;
+        width: min(100%, 290px);
+        margin: 0 auto 16px;
+        padding: 9px;
+        border: 1px solid rgba(141, 183, 255, 0.65);
+        border-radius: 50% 50% 12px 12px / 38% 38% 12px 12px;
+        background: rgba(8, 27, 45, 0.55);
+        box-shadow:
+          0 0 0 4px rgba(141, 183, 255, 0.1),
+          0 10px 24px rgba(0, 0, 0, 0.2);
+      }
+      .story-title {
+        text-align: left;
+      }
+      .story-connector {
+        position: relative;
+        width: 2px;
+        height: 30px;
+        margin: 8px auto 0;
+        background: linear-gradient(
+          180deg,
+          rgba(141, 183, 255, 0.15),
+          var(--accent),
+          var(--gold)
+        );
+      }
+      .story-connector::before,
+      .story-connector::after {
+        position: absolute;
+        left: 50%;
+        content: "";
+        transform: translateX(-50%);
+      }
+      .story-connector::before {
+        top: -3px;
+        width: 8px;
+        height: 8px;
+        border: 1px solid var(--gold);
+        border-radius: 50%;
+        background: var(--card);
+      }
+      .story-connector::after {
+        bottom: -3px;
+        width: 7px;
+        height: 7px;
+        background: var(--gold);
+        transform: translateX(-50%) rotate(45deg);
+      }
+      .story-photo img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        border-radius: 50% 50% 7px 7px / 38% 38% 7px 7px;
+      }
+      .story-copy {
+        padding: 14px;
+        border: 1px solid rgba(141, 183, 255, 0.3);
+        border-radius: 14px;
+        background: rgba(8, 27, 45, 0.35);
+        line-height: 1.75;
+        text-align: justify;
+      }
+      .story-flower {
+        position: absolute;
+        z-index: 1;
+        color: #d9c18b;
+        font-size: 1.25rem;
+        line-height: 1;
+        text-shadow: 0 1px 5px rgba(8, 27, 45, 0.8);
+      }
+      .story-flower.top-left {
+        top: -9px;
+        left: -9px;
+      }
+      .story-flower.top-right {
+        top: -9px;
+        right: -9px;
+      }
+      .story-flower.bottom-left {
+        bottom: -9px;
+        left: -9px;
+      }
+      .story-flower.bottom-right {
+        right: -9px;
+        bottom: -9px;
+      }
       .row .k {
         font-size: 0.72rem;
         letter-spacing: 0.2em;
@@ -544,6 +627,222 @@
       }
       .row .v {
         font-size: 1.05rem;
+      }
+      .form-field {
+        margin: 14px 0;
+        text-align: left;
+      }
+      .form-field label {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--gold);
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+      .form-field input,
+      .form-field select,
+      .form-field textarea {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: rgba(8, 27, 45, 0.82);
+        color: var(--ink);
+        font: inherit;
+      }
+      .form-field textarea {
+        min-height: 110px;
+        resize: vertical;
+      }
+      .form-field input:focus,
+      .form-field select:focus,
+      .form-field textarea:focus {
+        outline: 2px solid rgba(94, 161, 255, 0.5);
+        border-color: var(--accent);
+      }
+      .form-status {
+        min-height: 1.5em;
+        margin: 12px 0 0;
+        color: var(--gold);
+      }
+      .wish-list {
+        display: grid;
+        gap: 18px;
+        margin-top: 20px;
+        text-align: left;
+      }
+      .wish-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .wish-avatar {
+        display: grid;
+        flex: 0 0 36px;
+        width: 36px;
+        height: 36px;
+        place-items: center;
+        border: 1px solid rgba(141, 183, 255, 0.55);
+        border-radius: 50%;
+        background: linear-gradient(135deg, #173b58, #5ea1ff);
+        color: #fff;
+        font-size: 0.78rem;
+        font-weight: 700;
+      }
+      .wish-content {
+        min-width: 0;
+        flex: 1;
+        padding: 9px 12px;
+        border: 1px solid var(--line);
+        border-radius: 4px 16px 16px;
+        background: rgba(8, 27, 45, 0.48);
+        overflow-wrap: anywhere;
+      }
+      .wish-name {
+        margin-right: 6px;
+        color: var(--ink);
+        font-weight: 700;
+      }
+      .wish-message {
+        color: var(--ink);
+      }
+      .wish-time {
+        display: block;
+        margin-top: 5px;
+        color: var(--muted);
+        font-size: 0.75rem;
+      }
+      .atm-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: min(100%, 380px);
+        aspect-ratio: 1.586;
+        margin: 18px auto 12px;
+        padding: clamp(18px, 5vw, 28px);
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        border-radius: 20px;
+        background:
+          radial-gradient(
+            ellipse at 92% 8%,
+            rgba(255, 255, 255, 0.2),
+            transparent 38%
+          ),
+          linear-gradient(135deg, #123f86 0%, #0755a5 48%, #0b3473 100%);
+        box-shadow: 0 16px 32px rgba(0, 0, 0, 0.32);
+        color: #fff;
+        text-align: left;
+      }
+      .atm-card::before,
+      .atm-card::after {
+        position: absolute;
+        content: "";
+        width: 190px;
+        height: 190px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 50%;
+        pointer-events: none;
+      }
+      .atm-card::before {
+        top: -110px;
+        right: -54px;
+      }
+      .atm-card::after {
+        right: -94px;
+        bottom: -132px;
+        width: 250px;
+        height: 250px;
+      }
+      .atm-card-top,
+      .atm-card-number,
+      .atm-card-bottom {
+        position: relative;
+        z-index: 1;
+      }
+      .atm-card-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+      }
+      .atm-card-bank {
+        font-size: 1.7rem;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        line-height: 1;
+      }
+      .atm-card-bank small {
+        display: block;
+        margin-top: 5px;
+        font-size: 0.48rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+      }
+      .atm-card-type {
+        padding: 5px 9px;
+        border: 1px solid rgba(255, 255, 255, 0.42);
+        border-radius: 999px;
+        font-size: 0.62rem;
+        letter-spacing: 0.12em;
+      }
+      .atm-chip {
+        width: 42px;
+        height: 32px;
+        margin-top: 8px;
+        border: 1px solid rgba(255, 231, 173, 0.8);
+        border-radius: 7px;
+        background:
+          linear-gradient(
+            90deg,
+            transparent 47%,
+            rgba(127, 91, 28, 0.4) 48%,
+            rgba(127, 91, 28, 0.4) 52%,
+            transparent 53%
+          ),
+          linear-gradient(
+            0deg,
+            transparent 46%,
+            rgba(127, 91, 28, 0.4) 47%,
+            rgba(127, 91, 28, 0.4) 53%,
+            transparent 54%
+          ),
+          #dfc47d;
+      }
+      .atm-card-number {
+        margin-top: auto;
+        font-size: clamp(1rem, 5vw, 1.35rem);
+        font-weight: 600;
+        letter-spacing: 0.13em;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      }
+      .atm-card-bottom {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 10px;
+        font-size: 0.65rem;
+        letter-spacing: 0.08em;
+      }
+      .atm-card-holder {
+        overflow-wrap: anywhere;
+      }
+      .atm-card-holder strong {
+        display: block;
+        margin-top: 3px;
+        font-size: 0.8rem;
+        letter-spacing: 0.1em;
+      }
+      .atm-card-mark {
+        color: #ffcc35;
+        font-size: 0.8rem;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+      .atm-note {
+        margin: 0;
+        font-size: 0.85rem;
       }
       .btn {
         display: inline-block;
@@ -570,42 +869,9 @@
         font-size: 1.4rem;
         color: var(--ink);
       }
-      .audio-toggle {
-        position: fixed;
-        right: 18px;
-        bottom: 18px;
-        z-index: 20;
-        width: 48px;
-        height: 48px;
-        border: 1px solid rgba(141, 183, 255, 0.55);
-        border-radius: 50%;
-        background: rgba(9, 23, 35, 0.82);
-        color: var(--ink);
-        font-size: 1.1rem;
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-        cursor: pointer;
-      }
-      .audio-toggle.playing {
-        background: rgba(94, 161, 255, 0.18);
-        color: #dfeeff;
-      }
     </style>
   </head>
   <body>
-    <audio
-      id="bgMusic"
-      loop
-      preload="auto"
-      src="assets/alif_ba_ta_upin_ipin.mp3"
-    ></audio>
-    <button
-      id="musicToggle"
-      class="audio-toggle"
-      type="button"
-      aria-label="Toggle musik"
-    >
-      ♫
-    </button>
     <div class="leaf-fall" aria-hidden="true"></div>
     <div id="landingScreen" class="landing-screen">
       <div class="corner-top"></div>
@@ -614,12 +880,12 @@
         <div class="bismillah-wrap">
           <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمٰنِ الرَّحِيمِ</div>
         </div>
-        <div class="landing-photo">
-          <img src="assets/images.jpg" alt="Foto undangan" />
+        <div class="landing-monogram" aria-label="Inisial mempelai">
+          D &amp; S
         </div>
         <div class="small">Undangan</div>
-        <h2>Aqiqah</h2>
-        <p class="sub">Tasyakuran Rumah &amp; Aqiqah Del piero</p>
+        <h2>Pernikahan</h2>
+        <p class="sub">Del Piero &amp; Siti Maemunah</p>
         <button id="openInvitation" class="landing-btn" type="button">
           Buka Undangan
         </button>
@@ -634,18 +900,112 @@
       <div class="wrap invitation-shell">
         <section class="hero">
           <div class="small">Undangan</div>
-          <h1>Tasyakuran Rumah <span>&amp;</span> Aqiqah</h1>
+          <h1>Pernikahan</h1>
           <div class="orn">❖ ❖ ❖</div>
           <p class="muted">
-            Dengan rasa syukur atas nikmat dan karunia-Nya, kami mengundang
-            Bapak/Ibu/Saudara/i untuk hadir dalam acara aqiqah putra pertama
-            kami
+            Dengan memohon rahmat dan ridha Allah SWT, kami mengundang
+            Bapak/Ibu/Saudara/i untuk hadir dan memberikan doa restu pada
+            pernikahan kami
           </p>
-          <div class="baby">Del piero</div>
+          <div class="couple">Del Piero &amp; Siti Maemunah</div>
           <div class="to">Kepada Yth.<b id="guest">Bapak/Ibu/Saudara/i</b></div>
         </section>
 
-        <section class="card" style="--delay: 0.1s">
+        <section class="card bride-card" style="--delay: 0.1s">
+          <h2>Mempelai</h2>
+          <div class="row">
+            <div class="v">Del Piero</div>
+            <div class="family">
+              Putra dari Bapak Scevchenko &amp; Ibu Caroline
+            </div>
+          </div>
+          <div class="orn">❖</div>
+          <div class="row">
+            <div class="v">Siti Maemunah</div>
+            <div class="family">Putri dari Bapak Asep &amp; Ibu Asih</div>
+          </div>
+        </section>
+
+        <section class="card" style="--delay: 0.25s">
+          <h2>Love Story</h2>
+          <div class="row story-entry">
+            <div class="k story-title">1. Awal Pertemuan</div>
+            <div class="story-connector" aria-hidden="true"></div>
+            <div class="story-photo">
+              <span class="story-flower top-left" aria-hidden="true">✿</span>
+              <span class="story-flower top-right" aria-hidden="true">❀</span>
+              <img src="assets/foto1.jpg" alt="Foto uji - Awal Pertemuan" />
+              <span class="story-flower bottom-left" aria-hidden="true">❀</span>
+              <span class="story-flower bottom-right" aria-hidden="true"
+                >✿</span
+              >
+            </div>
+            <div class="muted story-copy">
+              Sebuah pertemuan memperkenalkan Del Piero dan Siti Maemunah. Dari
+              sapaan sederhana, tumbuh rasa ingin mengenal satu sama lain lebih
+              dekat.
+            </div>
+          </div>
+          <div class="row story-entry">
+            <div class="k story-title">2. Proses &amp; Pendekatan</div>
+            <div class="story-connector" aria-hidden="true"></div>
+            <div class="story-photo">
+              <span class="story-flower top-left" aria-hidden="true">✿</span>
+              <span class="story-flower top-right" aria-hidden="true">❀</span>
+              <img
+                src="assets/foto2.jpg"
+                alt="Foto uji - Proses dan Pendekatan"
+              />
+              <span class="story-flower bottom-left" aria-hidden="true">❀</span>
+              <span class="story-flower bottom-right" aria-hidden="true"
+                >✿</span
+              >
+            </div>
+            <div class="muted story-copy">
+              Hari demi hari mereka saling mengenal, berbagi cerita, dan
+              melewati berbagai momen bersama. Kedekatan itu menumbuhkan rasa
+              percaya dan keyakinan untuk melangkah searah.
+            </div>
+          </div>
+          <div class="row story-entry">
+            <div class="k story-title">3. Keputusan Serius</div>
+            <div class="story-connector" aria-hidden="true"></div>
+            <div class="story-photo">
+              <span class="story-flower top-left" aria-hidden="true">✿</span>
+              <span class="story-flower top-right" aria-hidden="true">❀</span>
+              <img src="assets/foto3.jpg" alt="Foto uji - Keputusan Serius" />
+              <span class="story-flower bottom-left" aria-hidden="true">❀</span>
+              <span class="story-flower bottom-right" aria-hidden="true"
+                >✿</span
+              >
+            </div>
+            <div class="muted story-copy">
+              Dengan niat baik dan restu keluarga, mereka mantap menyampaikan
+              keseriusan untuk membangun masa depan bersama dalam ikatan
+              pernikahan.
+            </div>
+          </div>
+          <div class="row story-entry">
+            <div class="k story-title">4. Harapan</div>
+            <div class="story-connector" aria-hidden="true"></div>
+            <div class="story-photo">
+              <span class="story-flower top-left" aria-hidden="true">✿</span>
+              <span class="story-flower top-right" aria-hidden="true">❀</span>
+              <img src="assets/foto4.jpg" alt="Foto uji - Harapan" />
+              <span class="story-flower bottom-left" aria-hidden="true">❀</span>
+              <span class="story-flower bottom-right" aria-hidden="true"
+                >✿</span
+              >
+            </div>
+            <div class="muted story-copy">
+              Semoga rumah tangga yang dibangun senantiasa dipenuhi cinta,
+              kebahagiaan, kesabaran, dan keberkahan, serta menjadi perjalanan
+              yang diridhai Allah SWT.
+            </div>
+          </div>
+        </section>
+
+        <section class="card" style="--delay: 0.4s">
           <h2>Hitung Mundur</h2>
           <div class="count" id="count">
             <div><b id="d">0</b><small>Hari</small></div>
@@ -655,43 +1015,177 @@
           </div>
         </section>
 
-        <section class="card" style="--delay: 0.25s">
-          <h2>Waktu &amp; Tempat</h2>
+        <section class="card" style="--delay: 0.55s">
+          <h2>Akad</h2>
           <div class="row">
             <div class="k">Hari &amp; Tanggal</div>
             <div class="v">Sabtu, 2 Januari 2027</div>
           </div>
           <div class="row">
-            <div class="k">Pukul</div>
-            <div class="v">11.00 WIB – selesai</div>
-          </div>
-          <div class="row">
-            <div class="k">Acara</div>
-            <div class="v">
-              Doa tasyakuran rumah, aqiqah &amp; makan bersama
-            </div>
+            <div class="k">Waktu</div>
+            <div class="v">Pukul 09.00</div>
           </div>
           <div class="row">
             <div class="k">Lokasi</div>
-            <div class="v">Bumi Indah City (Orchid)<br />Blok ML 10</div>
+            <div class="v">Kota Turin, Italia</div>
           </div>
           <a
             class="btn"
-            href="https://maps.google.com/?q=Bumi+Indah+City+Orchid+Blok+ML+10"
+            href="https://maps.google.com/?q=Turin%2C+Italy"
             target="_blank"
             rel="noopener"
-            >Buka Google Maps</a
+            >Lihat Lokasi</a
           >
         </section>
 
-        <section class="card" style="--delay: 0.4s">
-          <h2>Dokumentasi</h2>
-          <div class="photo-grid">
-            <img src="assets/images.jpg" alt="Foto 1" />
-            <img src="assets/images.jpg" alt="Foto 2" />
-            <img src="assets/images.jpg" alt="Foto 3" />
-            <img src="assets/images.jpg" alt="Foto 4" />
+        <section class="card" style="--delay: 0.7s">
+          <h2>Resepsi</h2>
+          <div class="row">
+            <div class="k">Hari &amp; Tanggal</div>
+            <div class="v">Sabtu, 2 Januari 2027</div>
           </div>
+          <div class="row">
+            <div class="k">Waktu</div>
+            <div class="v">Pukul 11.00 – selesai</div>
+          </div>
+          <div class="row">
+            <div class="k">Lokasi</div>
+            <div class="v">Kota Turin, Italia</div>
+          </div>
+          <a
+            class="btn"
+            href="https://maps.google.com/?q=Turin%2C+Italy"
+            target="_blank"
+            rel="noopener"
+            >Lihat Lokasi</a
+          >
+        </section>
+
+        <section class="card" style="--delay: 0.85s">
+          <h2>Konfirmasi Kehadiran</h2>
+          <p class="muted">
+            Konfirmasi ini tersimpan hanya di browser/perangkat yang digunakan
+            dan tidak terkirim kepada mempelai.
+          </p>
+          <form id="rsvpForm">
+            <div class="form-field">
+              <label for="rsvpName">Nama</label>
+              <input
+                id="rsvpName"
+                name="name"
+                type="text"
+                maxlength="100"
+                required
+              />
+            </div>
+            <div class="form-field">
+              <label for="rsvpAttendance">Konfirmasi</label>
+              <select id="rsvpAttendance" name="attendance" required>
+                <option value="">Pilih konfirmasi</option>
+                <option value="Hadir">Hadir</option>
+                <option value="Tidak dapat hadir">Tidak dapat hadir</option>
+                <option value="Belum dapat memastikan">
+                  Belum dapat memastikan
+                </option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="rsvpGuests">Jumlah tamu (termasuk Anda)</label>
+              <input
+                id="rsvpGuests"
+                name="guests"
+                type="number"
+                min="1"
+                max="20"
+                value="1"
+                required
+              />
+            </div>
+            <button class="btn" type="submit">Simpan Konfirmasi</button>
+            <p
+              id="rsvpStatus"
+              class="form-status"
+              role="status"
+              aria-live="polite"
+            ></p>
+          </form>
+        </section>
+
+        <section class="card" style="--delay: 1s">
+          <h2>Ucapan &amp; Doa</h2>
+          <p class="muted">
+            Ucapan disimpan hanya di browser/perangkat ini dan tidak terkirim
+            kepada mempelai.
+          </p>
+          <form id="wishForm">
+            <div class="form-field">
+              <label for="wishName">Nama</label>
+              <input
+                id="wishName"
+                name="name"
+                type="text"
+                maxlength="100"
+                required
+              />
+            </div>
+            <div class="form-field">
+              <label for="wishMessage">Ucapan dan doa</label>
+              <textarea
+                id="wishMessage"
+                name="message"
+                maxlength="1000"
+                placeholder="Tuliskan ucapan dan doa..."
+                required
+              ></textarea>
+            </div>
+            <button class="btn" type="submit">Kirim Ucapan</button>
+            <p
+              id="wishStatus"
+              class="form-status"
+              role="status"
+              aria-live="polite"
+            ></p>
+          </form>
+          <div id="wishList" class="wish-list" aria-live="polite"></div>
+        </section>
+
+        <section class="card" style="--delay: 1.15s">
+          <h2>Hadiah Pernikahan</h2>
+          <div
+            class="atm-card"
+            aria-label="Kartu rekening BRI, data rekening belum tersedia"
+          >
+            <div class="atm-card-top">
+              <div class="atm-card-bank">
+                BRI
+                <small>BANK RAKYAT INDONESIA</small>
+              </div>
+              <div class="atm-card-type">DEBIT</div>
+            </div>
+            <div class="atm-chip" aria-hidden="true"></div>
+            <div class="atm-card-number">
+              •••• &nbsp;•••• &nbsp;•••• &nbsp;••••
+            </div>
+            <div class="atm-card-bottom">
+              <div class="atm-card-holder">
+                NAMA PEMILIK
+                <strong>AKAN DITAMBAHKAN</strong>
+              </div>
+              <div class="atm-card-mark">BRI</div>
+            </div>
+          </div>
+          <p class="muted atm-note">
+            Nomor rekening dan nama pemilik belum tersedia.
+          </p>
+        </section>
+
+        <section class="card" style="--delay: 1.3s">
+          <h2>Kirim Gift</h2>
+          <div class="row">
+            <div class="k">Kota tujuan</div>
+            <div class="v">Kota Cimahi</div>
+          </div>
+          <p class="muted">Alamat lengkap penerima gift belum tersedia.</p>
         </section>
 
         <section class="foot">
@@ -702,8 +1196,7 @@
           </p>
           <div class="orn">❖</div>
           <div>Kami yang berbahagia,</div>
-          <div class="fam">BAPAK &amp; IBU Dari</div>
-          <div>DEL PIERO</div>
+          <div class="fam">Del Piero &amp; Siti Maemunah</div>
         </section>
       </div>
     </div>
@@ -712,9 +1205,14 @@
         var body = document.body;
         var openBtn = document.getElementById("openInvitation");
         var g = document.getElementById("guest");
-        var musicToggle = document.getElementById("musicToggle");
-        var bgMusic = document.getElementById("bgMusic");
         var leafFall = document.querySelector(".leaf-fall");
+        var rsvpForm = document.getElementById("rsvpForm");
+        var wishForm = document.getElementById("wishForm");
+        var rsvpStatus = document.getElementById("rsvpStatus");
+        var wishStatus = document.getElementById("wishStatus");
+        var wishList = document.getElementById("wishList");
+        var rsvpStorageKey = "wedding-rsvp-v1";
+        var wishStorageKey = "wedding-wishes-v1";
         var landingScrollY = window.scrollY;
 
         body.classList.add("landing-open");
@@ -722,48 +1220,6 @@
           "--locked-scroll-y",
           "-" + landingScrollY + "px",
         );
-
-        function updateMusicUi() {
-          if (!musicToggle || !bgMusic) return;
-          if (bgMusic.paused) {
-            musicToggle.textContent = "♫";
-            musicToggle.classList.remove("playing");
-            musicToggle.setAttribute("aria-label", "Nyalakan musik");
-          } else {
-            musicToggle.textContent = "❚❚";
-            musicToggle.classList.add("playing");
-            musicToggle.setAttribute("aria-label", "Matikan musik");
-          }
-        }
-
-        function toggleMusic() {
-          if (!bgMusic) return;
-          if (bgMusic.paused) {
-            bgMusic.volume = 0.5;
-            bgMusic.play().catch(function () {
-              console.log("Browser memblokir autoplay musik.");
-            });
-          } else {
-            bgMusic.pause();
-          }
-          updateMusicUi();
-        }
-
-        function autoPlayMusic() {
-          if (!bgMusic) return;
-          bgMusic.muted = false;
-          bgMusic.volume = 0.45;
-          bgMusic.play().catch(function () {
-            console.log(
-              "Autoplay diblokir browser, tetap bisa diputar manual.",
-            );
-          });
-          updateMusicUi();
-        }
-
-        if (musicToggle) {
-          musicToggle.addEventListener("click", toggleMusic);
-        }
 
         if (leafFall) {
           var leafCount = 22;
@@ -786,24 +1242,147 @@
           body.classList.remove("landing-open");
           body.style.removeProperty("--locked-scroll-y");
           window.scrollTo(0, landingScrollY);
-          if (bgMusic) {
-            bgMusic.muted = false;
-            bgMusic.volume = 0.45;
-            bgMusic.play().catch(function () {
-              console.log(
-                "Browser memblokir autoplay saat landing page dibuka.",
-              );
-            });
-            updateMusicUi();
-          }
         }
 
         if (openBtn) {
           openBtn.addEventListener("click", openInvitation);
         }
 
-        autoPlayMusic();
-        updateMusicUi();
+        function readStoredValue(key, fallback) {
+          var stored = localStorage.getItem(key);
+          return stored ? JSON.parse(stored) : fallback;
+        }
+
+        function setFormStatus(element, message) {
+          if (element) element.textContent = message;
+        }
+
+        function renderWishes(wishes) {
+          if (!wishList) return;
+          wishList.textContent = "";
+          wishes.forEach(function (wish) {
+            var item = document.createElement("article");
+            item.className = "wish-item";
+            var avatar = document.createElement("span");
+            avatar.className = "wish-avatar";
+            avatar.setAttribute("aria-hidden", "true");
+            avatar.textContent = String(wish.name || "?")
+              .trim()
+              .split(/\s+/)
+              .slice(0, 2)
+              .map(function (part) {
+                return part.charAt(0).toUpperCase();
+              })
+              .join("");
+
+            var content = document.createElement("div");
+            content.className = "wish-content";
+            var name = document.createElement("strong");
+            name.className = "wish-name";
+            name.textContent = wish.name;
+            var message = document.createElement("div");
+            message.className = "wish-message";
+            message.textContent = wish.message;
+            var time = document.createElement("time");
+            time.className = "wish-time";
+            if (wish.createdAt) {
+              var createdAt = new Date(wish.createdAt);
+              if (!Number.isNaN(createdAt.getTime())) {
+                time.dateTime = createdAt.toISOString();
+                time.textContent = createdAt.toLocaleString("id-ID", {
+                  dateStyle: "medium",
+                  timeStyle: "short",
+                });
+              }
+            }
+            if (!time.textContent) time.textContent = "Ucapan tersimpan";
+            content.appendChild(name);
+            content.appendChild(message);
+            content.appendChild(time);
+            item.appendChild(avatar);
+            item.appendChild(content);
+            wishList.appendChild(item);
+          });
+        }
+
+        try {
+          var savedRsvp = readStoredValue(rsvpStorageKey, null);
+          if (savedRsvp && rsvpForm) {
+            rsvpForm.elements.name.value = savedRsvp.name;
+            rsvpForm.elements.attendance.value = savedRsvp.attendance;
+            rsvpForm.elements.guests.value = savedRsvp.guests;
+            setFormStatus(rsvpStatus, "Konfirmasi tersimpan di browser ini.");
+          }
+          var savedWishes = readStoredValue(wishStorageKey, []);
+          if (!Array.isArray(savedWishes)) {
+            throw new Error("Saved guest wishes are not a list");
+          }
+          renderWishes(savedWishes);
+        } catch (error) {
+          setFormStatus(
+            rsvpStatus,
+            "Data lokal tidak dapat dibaca. Penyimpanan browser mungkin tidak tersedia.",
+          );
+          setFormStatus(
+            wishStatus,
+            "Data lokal tidak dapat dibaca. Penyimpanan browser mungkin tidak tersedia.",
+          );
+        }
+
+        if (rsvpForm) {
+          rsvpForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+            var formData = new FormData(rsvpForm);
+            var rsvp = {
+              name: String(formData.get("name") || "").trim(),
+              attendance: String(formData.get("attendance") || ""),
+              guests: Number(formData.get("guests")),
+            };
+            try {
+              localStorage.setItem(rsvpStorageKey, JSON.stringify(rsvp));
+              setFormStatus(
+                rsvpStatus,
+                "Konfirmasi tersimpan di browser ini, tetapi belum terkirim kepada mempelai.",
+              );
+            } catch (error) {
+              setFormStatus(
+                rsvpStatus,
+                "Konfirmasi gagal disimpan. Penyimpanan browser mungkin tidak tersedia.",
+              );
+            }
+          });
+        }
+
+        if (wishForm) {
+          wishForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+            var formData = new FormData(wishForm);
+            var wish = {
+              name: String(formData.get("name") || "").trim(),
+              message: String(formData.get("message") || "").trim(),
+              createdAt: new Date().toISOString(),
+            };
+            try {
+              var wishes = readStoredValue(wishStorageKey, []);
+              if (!Array.isArray(wishes)) {
+                throw new Error("Saved guest wishes are not a list");
+              }
+              wishes.push(wish);
+              localStorage.setItem(wishStorageKey, JSON.stringify(wishes));
+              renderWishes(wishes);
+              wishForm.reset();
+              setFormStatus(
+                wishStatus,
+                "Ucapan tersimpan di browser ini, tetapi belum terkirim kepada mempelai.",
+              );
+            } catch (error) {
+              setFormStatus(
+                wishStatus,
+                "Ucapan gagal disimpan. Penyimpanan browser mungkin tidak tersedia.",
+              );
+            }
+          });
+        }
 
         var cards = document.querySelectorAll(".card");
         var revealObserver = new IntersectionObserver(
@@ -848,7 +1427,7 @@
 
         renderGuestFromUrl();
 
-        var target = new Date("2027-01-02T11:00:00+07:00").getTime();
+        var target = new Date("2027-01-02T11:00:00+01:00").getTime();
         function tick() {
           var diff = Math.max(0, target - Date.now());
           var s = Math.floor(diff / 1000);
