@@ -532,15 +532,8 @@
       }
       .story-photo {
         position: relative;
-        width: min(100%, 290px);
+        width: min(100%, 310px);
         margin: 0 auto 16px;
-        padding: 9px;
-        border: 1px solid rgba(141, 183, 255, 0.65);
-        border-radius: 50% 50% 12px 12px / 38% 38% 12px 12px;
-        background: rgba(8, 27, 45, 0.55);
-        box-shadow:
-          0 0 0 4px rgba(141, 183, 255, 0.1),
-          0 10px 24px rgba(0, 0, 0, 0.2);
       }
       .story-title {
         text-align: left;
@@ -584,7 +577,19 @@
         width: 100%;
         aspect-ratio: 4 / 3;
         object-fit: cover;
-        border-radius: 50% 50% 7px 7px / 38% 38% 7px 7px;
+        border: 8px solid rgba(8, 27, 45, 0.95);
+        border-radius: 50% 50% 12px 12px / 38% 38% 12px 12px;
+        box-shadow:
+          0 0 0 1px rgba(141, 183, 255, 0.75),
+          0 0 0 5px rgba(141, 183, 255, 0.16),
+          0 10px 24px rgba(0, 0, 0, 0.2);
+      }
+      .story-photo img.story-image-1,
+      .story-photo img.story-image-3 {
+        object-position: center bottom;
+      }
+      .story-photo img.story-image-2 {
+        object-position: center top;
       }
       .story-copy {
         padding: 14px;
@@ -869,9 +874,52 @@
         font-size: 1.4rem;
         color: var(--ink);
       }
+      .audio-toggle {
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        z-index: 20;
+        display: grid;
+        width: 48px;
+        height: 48px;
+        place-items: center;
+        border: 1px solid rgba(141, 183, 255, 0.65);
+        border-radius: 50%;
+        background: rgba(9, 23, 35, 0.88);
+        color: var(--ink);
+        font-size: 1.15rem;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition:
+          opacity 0.3s ease,
+          background 0.3s ease,
+          visibility 0.3s ease;
+      }
+      body.entered .audio-toggle {
+        opacity: 1;
+        visibility: visible;
+      }
+      .audio-toggle.playing {
+        background: rgba(94, 161, 255, 0.3);
+      }
     </style>
   </head>
   <body>
+    <audio id="bgMusic" loop preload="none">
+      <source src="assets/Payung_Teduh_Akad.webm" type="audio/webm" />
+    </audio>
+    <button
+      id="musicToggle"
+      class="audio-toggle"
+      type="button"
+      aria-label="Nyalakan musik"
+      aria-pressed="false"
+      title="Nyalakan musik"
+    >
+      ♫
+    </button>
     <div class="leaf-fall" aria-hidden="true"></div>
     <div id="landingScreen" class="landing-screen">
       <div class="corner-top"></div>
@@ -934,7 +982,11 @@
             <div class="story-photo">
               <span class="story-flower top-left" aria-hidden="true">✿</span>
               <span class="story-flower top-right" aria-hidden="true">❀</span>
-              <img src="assets/foto1.jpg" alt="Foto uji - Awal Pertemuan" />
+              <img
+                class="story-image-1"
+                src="assets/foto1.jpg"
+                alt="Foto uji - Awal Pertemuan"
+              />
               <span class="story-flower bottom-left" aria-hidden="true">❀</span>
               <span class="story-flower bottom-right" aria-hidden="true"
                 >✿</span
@@ -953,6 +1005,7 @@
               <span class="story-flower top-left" aria-hidden="true">✿</span>
               <span class="story-flower top-right" aria-hidden="true">❀</span>
               <img
+                class="story-image-2"
                 src="assets/foto2.jpg"
                 alt="Foto uji - Proses dan Pendekatan"
               />
@@ -973,7 +1026,11 @@
             <div class="story-photo">
               <span class="story-flower top-left" aria-hidden="true">✿</span>
               <span class="story-flower top-right" aria-hidden="true">❀</span>
-              <img src="assets/foto3.jpg" alt="Foto uji - Keputusan Serius" />
+              <img
+                class="story-image-3"
+                src="assets/foto3.jpg"
+                alt="Foto uji - Keputusan Serius"
+              />
               <span class="story-flower bottom-left" aria-hidden="true">❀</span>
               <span class="story-flower bottom-right" aria-hidden="true"
                 >✿</span
@@ -1113,9 +1170,7 @@
 
         <section class="card" style="--delay: 1s">
           <h2>Ucapan &amp; Doa</h2>
-          <p class="muted">
-            Berikan pesan-pesan & do'a untuk kedua mempelai
-          </p>
+          <p class="muted">Berikan pesan-pesan & do'a untuk kedua mempelai</p>
           <form id="wishForm">
             <div class="form-field">
               <label for="wishName">Nama</label>
@@ -1205,6 +1260,8 @@
         var openBtn = document.getElementById("openInvitation");
         var g = document.getElementById("guest");
         var leafFall = document.querySelector(".leaf-fall");
+        var bgMusic = document.getElementById("bgMusic");
+        var musicToggle = document.getElementById("musicToggle");
         var rsvpForm = document.getElementById("rsvpForm");
         var wishForm = document.getElementById("wishForm");
         var rsvpStatus = document.getElementById("rsvpStatus");
@@ -1212,7 +1269,11 @@
         var wishList = document.getElementById("wishList");
         var rsvpStorageKey = "wedding-rsvp-v1";
         var wishStorageKey = "wedding-wishes-v1";
-        var landingScrollY = window.scrollY;
+        if ("scrollRestoration" in history) {
+          history.scrollRestoration = "manual";
+        }
+        window.scrollTo(0, 0);
+        var landingScrollY = 0;
 
         body.classList.add("landing-open");
         body.style.setProperty(
@@ -1236,11 +1297,62 @@
 
         body.classList.remove("entered");
 
+        function updateMusicUi() {
+          if (!bgMusic || !musicToggle) return;
+          var isPlaying = !bgMusic.paused;
+          var label = isPlaying ? "Matikan musik" : "Nyalakan musik";
+          musicToggle.textContent = isPlaying ? "❚❚" : "♫";
+          musicToggle.classList.toggle("playing", isPlaying);
+          musicToggle.setAttribute("aria-label", label);
+          musicToggle.setAttribute(
+            "aria-pressed",
+            isPlaying ? "true" : "false",
+          );
+          musicToggle.title = label;
+        }
+
+        function playMusic() {
+          if (!bgMusic) return;
+          bgMusic.volume = 0.45;
+          var playback = bgMusic.play();
+          if (playback && playback.catch) {
+            playback.catch(function () {
+              updateMusicUi();
+              if (musicToggle) {
+                musicToggle.title =
+                  "Musik tidak dapat diputar. Tekan untuk mencoba lagi.";
+                musicToggle.setAttribute(
+                  "aria-label",
+                  "Musik gagal diputar, tekan untuk mencoba lagi",
+                );
+              }
+            });
+          }
+        }
+
+        function toggleMusic() {
+          if (!bgMusic) return;
+          if (bgMusic.paused) {
+            playMusic();
+          } else {
+            bgMusic.pause();
+          }
+        }
+
+        if (musicToggle && bgMusic) {
+          musicToggle.addEventListener("click", toggleMusic);
+          bgMusic.addEventListener("play", updateMusicUi);
+          bgMusic.addEventListener("pause", updateMusicUi);
+          bgMusic.addEventListener("ended", updateMusicUi);
+          updateMusicUi();
+        }
+
         function openInvitation() {
           body.classList.add("entered");
           body.classList.remove("landing-open");
           body.style.removeProperty("--locked-scroll-y");
           window.scrollTo(0, landingScrollY);
+          playMusic();
         }
 
         if (openBtn) {
